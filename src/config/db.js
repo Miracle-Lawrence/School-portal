@@ -1,14 +1,18 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config();
 
 const sequelize = process.env.DATABASE_URL
   ? new Sequelize(process.env.DATABASE_URL, {
       dialect: "postgres",
+
       dialectOptions: {
         ssl: {
           require: true,
           rejectUnauthorized: false,
         },
       },
+
+      logging: false,
     })
   : new Sequelize(
       process.env.DB_NAME,
@@ -18,13 +22,23 @@ const sequelize = process.env.DATABASE_URL
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
         dialect: "postgres",
-        dialectOptions: {
-          ssl: {
-            require: true,
-            rejectUnauthorized: false,
-          },
-        },
+
+        logging: false,
       },
     );
 
-module.exports = sequelize;
+// DB connection function
+const connectDB = async () => {
+  try {
+    await sequelize.authenticate();
+
+    console.log("Database connected successfully");
+  } catch (error) {
+    console.error("Unable to connect to database:", error);
+  }
+};
+
+module.exports = {
+  sequelize,
+  connectDB,
+};

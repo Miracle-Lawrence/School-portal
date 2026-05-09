@@ -1,27 +1,24 @@
 require("dotenv").config();
 
-const express = require("express");
-const sequelize = require("./src/config/db");
+const app = require("./src/app");
 
-const app = express();
+const { sequelize, connectDB } = require("./src/config/db");
 
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// ✅ FORCE LOAD MODELS
+require("./src/modules/auth/auth.model");
 
 const PORT = process.env.PORT || 3000;
 
 async function startServer() {
   try {
-    await sequelize.authenticate();
-    console.log("Database connected successfully");
+    // Connect DB
+    await connectDB();
 
+    // Sync models (NOW TABLES WILL BE CREATED)
+    await sequelize.sync({ alter: true });
+
+       // Start server
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-
-      // 👇 ADD THIS
       const baseUrl = process.env.BASE_URL || `http://localhost:${PORT}`;
 
       console.log(`🚀 Live site running at: ${baseUrl}`);
