@@ -7,6 +7,7 @@ const { sequelize, connectDB } = require("./src/config/db");
 // ✅ FORCE LOAD MODELS
 require("./src/modules/auth/auth.model");
 require("./src/modules/students/student.model");
+require("./src/modules/classes/class.model");
 
 const PORT = process.env.PORT || 3000;
 
