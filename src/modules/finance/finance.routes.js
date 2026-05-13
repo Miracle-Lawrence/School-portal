@@ -10,4 +10,8 @@ router.post("/pay", auth, controller.makePayment);
 
 router.get("/invoices", auth, controller.getInvoices);
 
+router.post("/initialize-payment", auth, controller.initializePayment);
+
+router.post("/webhook/paystack", express.json(), controller.paystackWebhook);
+
 module.exports = router;
