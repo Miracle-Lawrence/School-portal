@@ -10,6 +10,8 @@ require("./src/modules/students/student.model");
 require("./src/modules/classes/class.model");
 require("./src/modules/subjects/subject.model");
 require("./src/modules/results/result.model");
+require("./src/modules/finance/invoice.model");
+require("./src/modules/finance/payment.model");
 
 const PORT = process.env.PORT || 3000;
 

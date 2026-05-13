@@ -14,6 +14,10 @@ const resultRoutes = require("../modules/results/result.routes");
 
 const reportRoutes = require("../modules/reports/report.routes");
 
+const financeRoutes = require("../modules/finance/finance.routes");
+
+
+
 router.use("/auth", authRoutes);
 
 router.use("/students", studentRoutes);
@@ -25,5 +29,7 @@ router.use("/subjects", subjectRoutes);
 router.use("/results", resultRoutes);
 
 router.use("/reports", reportRoutes);
+
+router.use("/finance", financeRoutes);
 
 module.exports = router;
