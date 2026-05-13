@@ -6,6 +6,7 @@ const { sequelize, connectDB } = require("./src/config/db");
 
 // ✅ FORCE LOAD MODELS
 require("./src/modules/auth/auth.model");
+require("./src/modules/students/student.model");
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,8 +17,12 @@ async function startServer() {
 
     // Sync models (NOW TABLES WILL BE CREATED)
     await sequelize.sync({ alter: true });
+    app.get("/", (req, res) => {
+      res.send("Welcome to the Live Site!");
+    });
 
-       // Start server
+
+    // Start server
     app.listen(PORT, () => {
       const baseUrl = process.env.BASE_URL || `http://localhost:${PORT}`;
 
