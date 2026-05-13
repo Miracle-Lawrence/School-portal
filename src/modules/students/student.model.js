@@ -44,6 +44,11 @@ const Student = sequelize.define("Student", {
 
   address: {
     type: DataTypes.TEXT,
+    },
+  
+  parentId: {
+    type: DataTypes.UUID,
+    allowNull: true,
   },
 });
 
