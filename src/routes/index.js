@@ -12,6 +12,8 @@ const subjectRoutes = require("../modules/subjects/subject.routes");
 
 const resultRoutes = require("../modules/results/result.routes");
 
+const reportRoutes = require("../modules/reports/report.routes");
+
 router.use("/auth", authRoutes);
 
 router.use("/students", studentRoutes);
@@ -21,5 +23,7 @@ router.use("/classes", classRoutes);
 router.use("/subjects", subjectRoutes);
 
 router.use("/results", resultRoutes);
+
+router.use("/reports", reportRoutes);
 
 module.exports = router;
