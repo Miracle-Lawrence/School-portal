@@ -8,6 +8,7 @@ const { sequelize, connectDB } = require("./src/config/db");
 require("./src/modules/auth/auth.model");
 require("./src/modules/students/student.model");
 require("./src/modules/classes/class.model");
+require("./src/modules/subjects/subject.model");
 
 const PORT = process.env.PORT || 3000;
 
