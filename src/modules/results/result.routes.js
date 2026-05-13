@@ -10,4 +10,6 @@ router.post("/create", authMiddleware, resultController.createResult);
 
 router.get("/all", authMiddleware, resultController.getResults);
 
+router.get("/positions", authMiddleware, resultController.computePositions);
+
 module.exports = router;
